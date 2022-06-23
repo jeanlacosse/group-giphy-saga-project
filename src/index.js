@@ -8,10 +8,10 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import logger from 'redux-logger'
 
-const favoriteList = (state = [], action) => {
+const favoriteList = (state = [1, 2], action) => {
   switch (action.type) {
-    case 'SET_FAVORITES':
-      return action.payload
+    // case 'SET_FAVORITES':
+    //   return action.payload
     default:
         return state
   }

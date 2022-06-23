@@ -5,7 +5,7 @@ const router = express.Router();
 
 // return all favorite images from DB
 router.get('/', (req, res) => {
-  const queryText = 'SELECT * FROM favorites';
+  const queryText = 'SELECT * FROM favorited_gifs';
   pool.query(queryText)
   .then((result) => { res.send(result.rows)})
   .catch((err) => {
