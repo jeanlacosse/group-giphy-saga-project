@@ -25,4 +25,4 @@ const store = createStore(
   // run the saga middleware
   sagaMiddleware.run(watcherSaga);
 
-  ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('react-root'));
+  ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
