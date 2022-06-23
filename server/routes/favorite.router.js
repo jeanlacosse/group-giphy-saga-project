@@ -3,9 +3,15 @@ const pool = require('../modules/pool');
 
 const router = express.Router();
 
-// return all favorite images
+// return all favorite images from DB
 router.get('/', (req, res) => {
-  res.sendStatus(200);
+  const queryText = 'SELECT * FROM favorites';
+  pool.query(queryText)
+  .then((result) => { res.send(result.rows)})
+  .catch((err) => {
+    console.log('Err completeing select favorites', err)
+    res.sendStatus(500)
+    });
 });
 
 // add a new favorite
