@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 // const dotenv = require('dotenv')
 // dotenv.config()
 
 function Search() {
 
     let [searchQuery, setSearchQuery] = useState('');
-    let [listOfGifs, setListOfGifs] = useState({});
+    let [listOfGifs, setListOfGifs] = useState([]);
 
     const fetchGif = (evt) => {
         evt.preventDefault();
@@ -23,9 +23,9 @@ function Search() {
         })
             .then(apiRes => {
                 console.log('here is api res', apiRes);
-                setListOfGifs({
-                    url: apiRes.data.data
-                })
+                setListOfGifs(
+                    apiRes.data.data
+                )
             })
             .catch(err => {
                 console.log('err is ', err)
@@ -35,23 +35,40 @@ function Search() {
     return (
         <>
             <form onSubmit={fetchGif}>
-                <input 
-                type='text' 
-                placeholder='Search for a gif!'
-                // value={} 
-                
-                onChange={(event) => {setSearchQuery(event.target.value)}
-            
-            }
-                 />
+                <input
+                    type='text'
+                    placeholder='Search for a gif!'
+                    // value={} 
+
+                    onChange={(event) => { setSearchQuery(event.target.value) }
+
+                    }
+                />
                 <input type='submit' value='Search' />
             </form>
             {/* create search bar
         send search to API as params
         add result to state 
         Display state of 5 gifs */}
-        {/* need to map over the listOF Gifs and append */}
-            <img src={listOfGifs.url} alt="" />
+            {/* need to map over the listOF Gifs and append */}
+            <ul>
+                {listOfGifs.map(gif => (
+                    <li>
+                        <img src={gif.images.fixed_height.url} alt="" />
+                        <button onClick={() => {
+                            dispatch({
+                                type: 'ADD_FAVORITE',
+                                payload: {
+                                    url: gif.images.fixed_height.url
+                                }
+                            })
+                        }}>
+                            Favorite this
+                        </button>
+                    </li>
+                ))}
+
+            </ul>
         </>
     )
 }
