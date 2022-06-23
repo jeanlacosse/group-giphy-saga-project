@@ -1,4 +1,7 @@
 import React from 'react';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import Favorites from '../Favorites/Favorites';
+import Search from '../Search/Search';
 
 function App(props) {
   return (
