@@ -16,6 +16,14 @@ const favoriteList = (state = [], action) => {
         return state
   }
 }
+const categoryList = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_CATEGORIES':
+      return action.payload
+  default:
+    return state;
+  }
+}
 
 function* fetchFavorites(action){
   console.log('rootSaga', action)
@@ -25,7 +33,7 @@ function* fetchFavorites(action){
     console.log('res.data in fetch', res.data)
   }
   catch (err) {
-    alert('GET in fetch')
+    alert('GET in fetch favorite')
     console.log(err)
     return;
   }
@@ -36,16 +44,37 @@ function* fetchFavorites(action){
     payload: res.data
   })
 }
+function* fetchCategories(action){
+  console.log('rootSaga', action)
+  let res;
+  try{
+    res = yield axios.get('/api/category');
+    console.log('res.data in fetch', res.data)
+  }
+  catch (err) {
+    alert('GET in fetch category')
+    console.log(err)
+    return;
+  }
+  // you can't dispatch in your store, so you use a put
+  yield put({
+    //sending the data back to the reducer to set the state
+    type: 'SET_CATEGORIES',
+    payload: res.data
+  })
+}
 
 function* watcherSaga() {
     yield takeEvery('FETCH_FAVORITES', fetchFavorites)
+    yield takeEvery('FETCH_CATEGORIES', fetchCategories)
   }
 
 const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(
     combineReducers({ 
-        favoriteList
+        favoriteList,
+        categoryList
      }),
     applyMiddleware(sagaMiddleware, logger)
   );
