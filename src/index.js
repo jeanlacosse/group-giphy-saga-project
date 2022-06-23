@@ -13,7 +13,7 @@ function* watcherSaga() {
     yield takeEvery('ADD_FAVORITE', addFavorite)
   }
 
-function* addFavorite() {
+function* addFavorite(action) {
     console.log('create favorite payload', action.payload)
   try {
     yield axios.post('/api/favorite', action.payload);

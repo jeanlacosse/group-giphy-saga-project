@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 // const dotenv = require('dotenv')
 // dotenv.config()
 
 function Search() {
+    const dispatch = useDispatch();
 
     let [searchQuery, setSearchQuery] = useState('');
     let [listOfGifs, setListOfGifs] = useState([]);
@@ -39,9 +41,7 @@ function Search() {
                     type='text'
                     placeholder='Search for a gif!'
                     // value={} 
-
                     onChange={(event) => { setSearchQuery(event.target.value) }
-
                     }
                 />
                 <input type='submit' value='Search' />
