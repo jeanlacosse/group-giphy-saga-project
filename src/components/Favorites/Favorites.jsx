@@ -15,7 +15,7 @@ function Favorites () {
             type: 'FETCH_FAVORITES'
         })
     }
-    let key = 0;
+    
 
 
     return (
@@ -23,11 +23,16 @@ function Favorites () {
             <h3>FAVORITES LIST</h3>
             {
                 <ul>
+                    {/* looping through the favorited gifs
+                    it will append the gif and the drop down component
+                    and it's passing the gif.id in a prop */}
                     {favoriteList.map(gif => 
                     <li key={gif.id}>
                     <img src={gif.url}/>
-                    <CategoryDropDown /> 
-                    <button>Submit Category</button>
+                    {gif.category ? 
+                    <p>{gif.category}</p> : 
+                    <CategoryDropDown gifId={gif.id}/> }
+                    
                     </li>)}
                 </ul>
             }

@@ -52,7 +52,7 @@ function* fetchCategories(action){
     console.log('res.data in fetch', res.data)
   }
   catch (err) {
-    alert('GET in fetch category')
+    alert('err in fetch category')
     console.log(err)
     return;
   }
@@ -64,9 +64,24 @@ function* fetchCategories(action){
   })
 }
 
+function* addCategory(action) {
+  try {
+    yield axios.put(`/api/favorite/${action.payload.id}`)
+      console.log('updating gif', action.payload.id ,'category to', action.payload.category)
+  }
+  catch (err) {
+    console.err('err in category update', err);
+    return;
+  }
+  yield put ({
+    type:'FETCH_FAVORITES'
+  })
+}
+
 function* watcherSaga() {
-    yield takeEvery('FETCH_FAVORITES', fetchFavorites)
-    yield takeEvery('FETCH_CATEGORIES', fetchCategories)
+    yield takeEvery('FETCH_FAVORITES', fetchFavorites);
+    yield takeEvery('FETCH_CATEGORIES', fetchCategories);
+    yield takeEvery('ADD_CATEGORY', addCategory);
   }
 
 const sagaMiddleware = createSagaMiddleware()
