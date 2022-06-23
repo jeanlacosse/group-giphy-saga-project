@@ -7,11 +7,11 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import logger from 'redux-logger'
-
-const favoriteList = (state = [1, 2], action) => {
+                
+const favoriteList = (state = [], action) => {
   switch (action.type) {
-    // case 'SET_FAVORITES':
-    //   return action.payload
+    case 'SET_FAVORITES':
+      return action.payload
     default:
         return state
   }

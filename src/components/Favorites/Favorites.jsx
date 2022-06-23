@@ -23,22 +23,14 @@ function Favorites () {
             <h3>FAVORITES LIST</h3>
             {
                 <ul>
-                    {favoriteList.map(gif => <li key={key ++}>gif <CategoryDropDown /> 
+                    {favoriteList.map(gif => 
+                    <li key={gif.id}>
+                    <img src={gif.url}/>
+                    <CategoryDropDown /> 
                     <button>Submit Category</button>
                     </li>)}
                 </ul>
-            
-            
-            /* <ul>
-                {favoriteList.map(favorite => (
-                    <li
-                    key={favorite.id}
-                    url={favorite.url}
-                    >
-                        {favorite.data && <img src={favorite.data.images.original.url} />}
-                    </li>
-                ))}
-            </ul> */}
+            }
         </div>
     )
 }
