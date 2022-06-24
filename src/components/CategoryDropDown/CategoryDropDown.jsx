@@ -7,7 +7,7 @@ function CategoryDropDown({ gifId }) {
     const optionValues = categories.map(category => category.name)
     console.log('categories', categories)
     const dispatch = useDispatch();
-    const [categoryId, setCategoryId] = useState(0)
+    const [categoryId, setCategoryId] = useState(1)
 
 
     useEffect(() => {
@@ -35,6 +35,7 @@ function CategoryDropDown({ gifId }) {
                         
                 {/* this first value is always going to be here and then we will map through it to show the rest */}
                 {/* <option value="none" >Select A Category</option> */}
+                <option>Select Category</option>
                 {categories.map((value) => (
                     //favorite the input from the drop down is the id and not the name so you need to select the id
                     <option 
