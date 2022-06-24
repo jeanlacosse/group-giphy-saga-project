@@ -17,3 +17,6 @@
   .App-intro {
     font-size: large;
   }
+  li {
+    list-style-type: none;
+  }

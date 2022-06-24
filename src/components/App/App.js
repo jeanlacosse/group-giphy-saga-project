@@ -3,19 +3,18 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Favorites from '../Favorites/Favorites';
 import Header from '../Header/Header';
 import Search from '../Search/Search';
+import './App.css';
 
 function App() {
   return (
     <div className='App'>
       <Router>
-        <Route>
           <Header />
+        <Route path="/" exact>
+          <Search />
         </Route>
-        <Route>
-          <Search path="/" />
-        </Route>
-        <Route>
-          <Favorites path= "/favorites" />
+        <Route path= "/favorites" exact>
+          <Favorites />
         </Route>
       </Router>
     </div>
