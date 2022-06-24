@@ -81,10 +81,27 @@ function* addCategory(action) {
 }
 
 function* watcherSaga() {
+
     yield takeEvery('FETCH_FAVORITES', fetchFavorites);
     yield takeEvery('FETCH_CATEGORIES', fetchCategories);
     yield takeEvery('ADD_CATEGORY', addCategory);
+
+    yield takeEvery('ADD_FAVORITE', addFavorite)
+
   }
+
+function* addFavorite(action) {
+    console.log('create favorite payload', action.payload)
+  try {
+    yield axios.post('/api/favorite', action.payload);
+  }
+  catch (err) {
+    console.error(err)
+  }
+  yield put({
+    type: 'FETCH_FAVORITES'
+  })
+}
 
 const sagaMiddleware = createSagaMiddleware()
 
