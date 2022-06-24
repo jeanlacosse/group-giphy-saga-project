@@ -16,7 +16,7 @@ VALUES ('funny'), ('cohort'), ('cartoon'), ('nsfw'), ('meme');
 CREATE TABLE "favorited_gifs" (
     "id" SERIAL PRIMARY KEY,
     "url" VARCHAR NOT NULL,
-    "category_id" INT REFERENCES category
+    "category_id" INT REFERENCES category.id
 );
 
 SELECT *,

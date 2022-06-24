@@ -18,6 +18,7 @@ function Search() {
             method: 'GET',
             url: 'https://api.giphy.com/v1/gifs/search',
             params: {
+                // error on call dotenv, why??
                 key: 'DiRKLAuSjVHHIa1TMW7QqTP772sVKFdX',
                 q: searchQuery,
                 limit: 5
@@ -46,11 +47,7 @@ function Search() {
                 />
                 <input type='submit' value='Search' />
             </form>
-            {/* create search bar
-        send search to API as params
-        add result to state 
-        Display state of 5 gifs */}
-            {/* need to map over the listOF Gifs and append */}
+          
             <ul>
                 {listOfGifs.map(gif => (
                     <li>
