@@ -1,0 +1,19 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-header {
+    background-color: #43fff6b3;
+    min-height: 70px;
+    padding: 20px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+  }
+  
+  .App-title {
+    font-size: 2em;
+  }
+  
+  .App-intro {
+    font-size: large;
+  }
