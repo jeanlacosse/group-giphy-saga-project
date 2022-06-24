@@ -31,7 +31,7 @@ function Favorites() {
                         <li key={gif.id}>
                             <img src={gif.url} />
                             {gif.category_id ?
-                                 categoryList.map(category =>  {category.id === gif.category_id && <p>{category.name}</p>  })
+                                 categoryList.map(category =>  category.id === gif.category_id && <p>{category.name}</p>  )
                                 :
                                 <CategoryDropDown gifId={gif.id} />}
 

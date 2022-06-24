@@ -8,14 +8,14 @@ function App() {
   return (
     <div className='App'>
       <Router>
-        <Route>
+        
           <Header />
+        
+        <Route path="/" exact>
+          <Search  />
         </Route>
-        <Route>
-          <Search path="/" />
-        </Route>
-        <Route>
-          <Favorites path= "/favorites" />
+        <Route path= "/favorites" exact>
+          <Favorites />
         </Route>
       </Router>
     </div>
