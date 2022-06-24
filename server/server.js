@@ -5,7 +5,7 @@ const app = express();
 // App PORT set with production check
 const PORT = process.env.PORT || 5000;
 
-// Route includes
+// Route includes - this is just accessing router
 const favoriteRouter = require('./routes/favorite.router');
 const categoryRouter = require('./routes/category.router');
 
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files
 app.use(express.static('build'));
 
-// Routes
+// Routes - this would be to the api endpoint
 app.use('/api/favorite', favoriteRouter);
 app.use('/api/category', categoryRouter);
 
