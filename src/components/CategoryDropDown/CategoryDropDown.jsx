@@ -7,7 +7,7 @@ function CategoryDropDown({gifId}) {
     const optionValues = categories.map(category => category.name)
     console.log(optionValues,'options')
     const dispatch = useDispatch();
-    const [category, setCategory] = useState('')
+    const [categoryId, setCategoryId] = useState('')
     
     
     useEffect(() => {
@@ -20,7 +20,7 @@ function CategoryDropDown({gifId}) {
     function handleCategory() {
         dispatch({
             type: 'ADD_CATEGORY',
-            payload: {id: gifId, category: category}
+            payload: {id: gifId, categoryId: categoryId}
         })
     }
 // local state is now holding the selected category / category
@@ -31,7 +31,8 @@ function CategoryDropDown({gifId}) {
             {/* this first value is always going to be here and then we will map through it to show the rest */}
             <option value="none" >Select A Category</option>
         {optionValues.map((value) => (
-          <option onChange={( e => setCategory(e.target.value))} key={value} value={value}>{value}
+            //favorite the input from the drop down is the id and not the name so you need to select the id
+          <option onChange={( e => setCategoryId(e.target.value.id))} key={value} value={value.id}>{value}
           <button onClick={handleCategory}>Submit Category</button>
           </option>
         ))}

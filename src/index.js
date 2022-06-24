@@ -66,8 +66,10 @@ function* fetchCategories(action){
 
 function* addCategory(action) {
   try {
-    yield axios.put(`/api/favorite/${action.payload.id}`)
-      console.log('updating gif', action.payload.id ,'category to', action.payload.category)
+    yield axios.put(`/api/favorite/${action.payload.id}`,  {categoryId: action.payload.category.id})
+    // have to make it an object when you're sending to the server
+    // otherwise you can't pick out specific data in rec.body
+      console.log('updating gif', action.payload.id ,'category to', action.payload.categoryId)
   }
   catch (err) {
     console.err('err in category update', err);

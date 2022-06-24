@@ -18,3 +18,11 @@ CREATE TABLE "favorited_gifs" (
     "url" VARCHAR NOT NULL,
     "category_id" INT REFERENCES category
 );
+
+SELECT *,
+	category.name 
+FROM favorited_gifs
+JOIN category
+	ON category.id = favorited_gifs.category_id 
+ORDER BY
+	category.name DESC;
